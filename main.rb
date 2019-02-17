@@ -1,10 +1,6 @@
-require 'pry-byebug'
-require 'colorize'
-require 'benchmark'
-
 NUM_GENERATIONS = 100
-GRID_SIZE = 15
-POPULATION_SIZE = 100
+GRID_SIZE = 10
+POPULATION_SIZE = 80
 MUTATION_RATE = 0.01
 FITNESS_EXPONENT = 1
 
@@ -18,6 +14,7 @@ K_INITIAL, K_STEP, K_STEP_THRESHOLD = 3, 1, 30 # constants for tournament select
 ANIMATION = false
 SLEEP = 0.2
 
+require 'colorize'
 require_relative 'grid.rb'
 
 g = Grid.new
@@ -273,28 +270,28 @@ data = ""
 
 # Genetic algorithm (GA) starts here
 
-  population = Population.new
-  population.seed!
+population = Population.new
+population.seed!
 
-  if SELECTION_METHOD == "tournament"
-    k = K_INITIAL
-  else
-    k = nil
-  end # comment out for roulette wheel selection
+if SELECTION_METHOD == "tournament"
+  k = K_INITIAL
+else
+  k = nil
+end
 
-  1.upto(NUM_GENERATIONS) do |i|
-    k += K_STEP if i % K_STEP_THRESHOLD == 0 unless k + K_STEP > POPULATION_SIZE if !k.nil?
-    if ANIMATION
-      system "clear"
-      population.elite_path.draw_path
-    end
-    print "#{i}. "
-    puts population.info
-    data += "#{i},#{population.data}\n"
-    children = population.reproduce(k)
-    population = Population.new(children)
-    sleep(SLEEP) if ANIMATION
+1.upto(NUM_GENERATIONS) do |i|
+  k += K_STEP if i % K_STEP_THRESHOLD == 0 unless k + K_STEP > POPULATION_SIZE if !k.nil?
+  if ANIMATION
+    system "clear"
+    population.elite_path.draw_path
   end
+  print "#{i}. "
+  puts population.info
+  data += "#{i},#{population.data}\n"
+  children = population.reproduce(k)
+  population = Population.new(children)
+  sleep(SLEEP) if ANIMATION
+end
 
 # GA ends here
 

@@ -67,36 +67,6 @@ class SquareGrid
       @size = grid[:size]
       @penalty_per_missing_step = grid[:penalty_per_missing_step]
     end
-    # binding.pry()
     @expected_total_weight = 2 * grid[:size] * grid[:max_weight] / 2
   end
 end
-
-def load_grid_info(grid_size)
-  grid = Hash.new
-  grid[:size] = grid_size
-  filepath = "grids/#{grid_size}x#{grid_size}.txt"
-  File.open(filepath, "r") do |f|
-    array = []
-    i = 0
-    f.each_line do |line|
-      if i == 0
-        grid[:max_weight] = line.split(",").first.to_i
-        grid[:penalty_per_missing_step] = line.split(",").last.to_i
-      else
-        sub_array = []
-        line.split(",").each do |num|
-          sub_array << num.to_i
-        end
-        array << sub_array
-      end
-
-      i += 1
-    end
-    grid[:grid] = array
-    grid[:expected_total_weight] = 2 * grid[:size] * grid[:max_weight] / 2
-  end
-  return grid
-end
-
-g = SquareGrid.new({size: 3, max_weight: 20, penalty_per_missing_step: 25}, "+")
