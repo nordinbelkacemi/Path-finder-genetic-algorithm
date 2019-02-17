@@ -43,9 +43,9 @@ We flip one randomly selected 1 and one randomly selected 0
 ## Results
 In my implementation of the GA, I used elitism, which is the unconditional inclusion of the individual with the highest fitness in the next generation. This ensures that the highest fitness in the next generation is always greater than or equal to that of the previous generation (see orange line).
 
-![Fitness plot](https://i.ibb.co/XX9B4PK/screenshot-12.png | width=450)
+![Fitness plot](https://i.ibb.co/XX9B4PK/screenshot-12.png)
 
-![Terminal](https://i.ibb.co/brqLhnn/screenshot-13.png | width=450)
+![Terminal](https://i.ibb.co/brqLhnn/screenshot-13.png)
 
 This is a 15x15 grid and the GA found the solution on the 61st iteration.
 
@@ -63,7 +63,7 @@ That is, in how many different ways can I pick 15 spots out of 30, not taking in
 
 The answer is given by the n choose k expression, or the binomial coefficient:
 
-![Binomial coefficient](https://i.ibb.co/nmty764/screenshot-14.png | width=150)
+![Binomial coefficient](https://i.ibb.co/nmty764/screenshot-14.png)
 
 In our case, n = 30 and k = 15, which gives us 30 choose 15 = 155,117,520
 
