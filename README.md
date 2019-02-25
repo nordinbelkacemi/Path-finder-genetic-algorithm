@@ -55,8 +55,6 @@ Let's stay with our 15x15 grid. The path will be represented by an array of 30 d
 
 Half of the 30 digits are 1s, the other half 0s, the question can be formulated as followed:
 
-[\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_,\_]
-
 How many different ways are there to fit 15 1s into 30 spots (not taking order into consideration)?
 
 That is, in how many different ways can I pick 15 spots out of 30, not taking into consideration the order in which we pick them?
